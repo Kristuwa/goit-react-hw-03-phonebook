@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import { FormContainer, Input, Button, Label } from './ContactForm.styled';
 import PropTypes from 'prop-types';
 
-const ContactForm = ({ contacts, onFormSubmit }) => {
+const ContactForm = ({ onFormSubmit }) => {
   const initialValues = {
     name: '',
     number: '',
@@ -44,12 +44,6 @@ const ContactForm = ({ contacts, onFormSubmit }) => {
 };
 
 ContactForm.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
   onFormSubmit: PropTypes.func.isRequired,
 };
 

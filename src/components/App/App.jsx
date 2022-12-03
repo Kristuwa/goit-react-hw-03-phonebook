@@ -26,14 +26,14 @@ class App extends Component {
 
   addContact = newContact => {
     const { contacts } = this.state;
-    const id = shortid.generate();
-    const newAddContact = { ...newContact, id: id };
     for (let contact of contacts) {
-      if (newAddContact.name.toLowerCase() === contact.name.toLowerCase()) {
-        alert(`${newAddContact.name} is already in contacts`);
+      if (newContact.name.toLowerCase() === contact.name.toLowerCase()) {
+        alert(`${newContact.name} is already in contacts`);
         return;
       }
     }
+    const id = shortid.generate();
+    const newAddContact = { ...newContact, id: id };
     this.setState(prevState => {
       return {
         contacts: [newAddContact, ...prevState.contacts],
@@ -60,12 +60,12 @@ class App extends Component {
   };
 
   render() {
-    const { contacts, filter } = this.state;
+    const { filter } = this.state;
     const filterList = this.getFilterList();
     return (
       <Container>
         <TitleForm>Phonebook</TitleForm>
-        <ContactForm contacts={contacts} onFormSubmit={this.addContact} />
+        <ContactForm onFormSubmit={this.addContact} />
         <TitleContacts>Contacts</TitleContacts>
         {filterList.length > 0 && (
           <>
